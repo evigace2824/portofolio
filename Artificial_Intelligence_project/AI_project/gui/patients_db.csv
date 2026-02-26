@@ -1,0 +1,6 @@
+patient_id,age,gender,ward,admission_type,comorbidity_index,hour_from_admission,heart_rate,respiratory_rate,spo2_pct,temperature_c,systolic_bp,diastolic_bp,oxygen_device,oxygen_flow,mobility_score,nurse_alert,wbc_count,lactate,creatinine,crp_level,hemoglobin,sepsis_risk_score
+P001,75,M,1,Emergency,3,12,90,18,96,36.8,120,75,NasalCannula,2,2,0,8.5,1.2,1.1,6,13.5,0.35
+P002,60,F,2,Elective,1,36,79,16,98,36.6,125,80,RoomAir,0,3,0,6.8,0.9,0.9,3,14.2,0.1
+P003,82,M,1,Emergency,4,24,95,22,93,37.9,105,65,NasalCannula,3,1,1,14.2,2.8,1.9,45,11.0,0.75
+P004,68,F,3,Emergency,2,48,88,20,95,37.2,118,72,RoomAir,0,2,0,9.6,1.5,1.3,12,12.8,0.25
+P005,90,F,2,Emergency,5,8,110,26,90,38.5,95,60,FaceMask,6,1,1,18.5,4.2,2.4,120,9.8,0.9
