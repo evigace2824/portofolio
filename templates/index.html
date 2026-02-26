@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Password Security Analyzer</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: radial-gradient(circle at top, #0b1120, #020617);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: rgba(11, 17, 32, 0.9);
+            border: 1px solid #1e3a8a;
+            border-radius: 16px;
+            padding: 40px;
+            width: 430px;
+
+            box-shadow: 0 0 22px rgba(30, 58, 138, 0.35);
+            animation: glowPulse 3.5s infinite ease-in-out;
+            transition: 0.3s;
+        }
+
+        .container:hover {
+            box-shadow: 0 0 34px rgba(30, 58, 138, 0.55);
+        }
+
+        @keyframes glowPulse {
+            0% { box-shadow: 0 0 22px rgba(30, 58, 138, 0.25); }
+            50% { box-shadow: 0 0 34px rgba(30, 58, 138, 0.45); }
+            100% { box-shadow: 0 0 22px rgba(30, 58, 138, 0.25); }
+        }
+
+        h1 {
+            margin-bottom: 25px;
+            color: #60a5fa;
+            text-shadow: 0 0 8px rgba(96, 165, 250, 0.35);
+        }
+
+        h2 {
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        p {
+            margin: 6px 0;
+            color: #cbd5f5;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #1e3a8a;
+            background: #020617;
+            color: white;
+            outline: none;
+            transition: 0.25s;
+        }
+
+        input:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 10px rgba(37, 99, 235, 0.35);
+        }
+
+        input::placeholder {
+            color: #64748b;
+        }
+
+        .toggle {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #60a5fa;
+        }
+
+        .strength-bar {
+            height: 10px;
+            border-radius: 8px;
+            background: #020617;
+            margin-top: 18px;
+            overflow: hidden;
+            border: 1px solid #1e3a8a;
+        }
+
+        .strength-fill {
+            height: 100%;
+            width: 0%;
+            transition: 0.5s ease;
+        }
+
+        .result {
+            margin-top: 22px;
+            padding: 16px;
+            border-radius: 12px;
+            background: rgba(2, 6, 23, 0.75);
+            border: 1px solid rgba(30, 58, 138, 0.4);
+        }
+
+        strong {
+            color: #60a5fa;
+        }
+
+        .issues {
+            margin-top: 10px;
+            color: #f87171;
+        }
+
+        .ok {
+            color: #4ade80;
+        }
+
+        /* 🔥 Attack Meter */
+
+        .attack-meter {
+            margin-top: 6px;
+            font-size: 14px;
+        }
+
+        .bar {
+            height: 8px;
+            background: #020617;
+            border-radius: 6px;
+            margin: 4px 0 10px 0;
+            border: 1px solid #1e3a8a;
+            overflow: hidden;
+        }
+
+        .bar div {
+            height: 100%;
+            width: 0%;
+            background: #22c55e;
+            transition: 0.5s ease;
+        }
+
+        /* ✅ Policy Checker */
+
+        .policy-pass { color: #4ade80; }
+        .policy-fail { color: #f87171; }
+
+        /* 🔥 Threat Level */
+
+        .threat-low { color: #4ade80; }
+        .threat-medium { color: #eab308; }
+        .threat-high { color: #ef4444; }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🔐 Password Security Analyzer</h1>
+
+    <div class="input-wrapper">
+        <input type="password" id="password" placeholder="Enter password">
+        <span class="toggle" onclick="togglePassword()">👁</span>
+    </div>
+
+    <div class="strength-bar">
+        <div class="strength-fill" id="strengthFill"></div>
+    </div>
+
+    <div class="result">
+        <h2 id="strengthText">Enter a password</h2>
+
+        <p><strong>Entropy:</strong> <span id="entropy">0</span> bits</p>
+        <p><strong>Estimated Crack Time:</strong> <span id="crackTime">–</span></p>
+
+        <!-- 🔥 NEW CYBERSECURITY FEATURE -->
+        <p><strong>Threat Level:</strong>
+            <span id="threatLevel">–</span>
+        </p>
+
+        <p><strong>Attack Resistance:</strong></p>
+
+        <div class="attack-meter">
+            <div>Brute Force
+                <div class="bar"><div id="bruteBar"></div></div>
+            </div>
+
+            <div>Dictionary Attack
+                <div class="bar"><div id="dictBar"></div></div>
+            </div>
+
+            <div>Hybrid Attack
+                <div class="bar"><div id="hybridBar"></div></div>
+            </div>
+        </div>
+
+        <p><strong>Policy Compliance:</strong>
+            <span id="policyStatus">–</span>
+        </p>
+
+        <div id="issues"></div>
+    </div>
+</div>
+
+<script>
+    const passwordInput = document.getElementById("password");
+
+    passwordInput.addEventListener("input", analyzePassword);
+
+    function analyzePassword() {
+        const password = passwordInput.value;
+        const issues = [];
+
+        let charset = 0;
+        if (/[a-z]/.test(password)) charset += 26;
+        if (/[A-Z]/.test(password)) charset += 26;
+        if (/[0-9]/.test(password)) charset += 10;
+        if (/[^a-zA-Z0-9]/.test(password)) charset += 32;
+
+        const entropy = password.length > 0
+            ? Math.round(password.length * Math.log2(charset || 1))
+            : 0;
+
+        let strength = "";
+        let color = "";
+        let width = 0;
+
+        if (password.length < 6) {
+            strength = "Very Weak";
+            color = "#ef4444";
+            width = 20;
+            issues.push("Password too short");
+        } else if (entropy < 40) {
+            strength = "Weak";
+            color = "#f97316";
+            width = 40;
+        } else if (entropy < 60) {
+            strength = "Moderate";
+            color = "#eab308";
+            width = 65;
+        } else if (entropy < 80) {
+            strength = "Strong";
+            color = "#22c55e";
+            width = 85;
+        } else {
+            strength = "Very Strong";
+            color = "#4ade80";
+            width = 100;
+        }
+
+        if (!/[A-Z]/.test(password)) issues.push("Missing uppercase letters");
+        if (!/[0-9]/.test(password)) issues.push("Missing numbers");
+        if (!/[^a-zA-Z0-9]/.test(password)) issues.push("Missing special characters");
+
+        updateUI(strength, color, width, entropy, issues);
+    }
+
+    function updateUI(strength, color, width, entropy, issues) {
+        document.getElementById("strengthText").innerText = strength + " Password";
+        document.getElementById("strengthText").style.color = color;
+
+        const fill = document.getElementById("strengthFill");
+        fill.style.width = width + "%";
+        fill.style.background = color;
+
+        document.getElementById("entropy").innerText = entropy;
+
+        document.getElementById("crackTime").innerText =
+            entropy < 40 ? "Instantly" :
+            entropy < 60 ? "Minutes / Hours" :
+            entropy < 80 ? "Years" :
+            "Centuries";
+
+        updateAttackMeters(entropy);
+        checkPolicy();
+        updateThreatLevel(entropy);
+
+        const issuesBox = document.getElementById("issues");
+        issuesBox.innerHTML = "";
+
+        if (issues.length > 0) {
+            issuesBox.innerHTML = "<div class='issues'><h3>⚠️ Issues Detected:</h3></div>";
+            issues.forEach(issue => {
+                issuesBox.innerHTML += "<p class='issues'> - " + issue + "</p>";
+            });
+        } else {
+            issuesBox.innerHTML = "<p class='ok'>✅ No weaknesses detected</p>";
+        }
+    }
+
+    function updateAttackMeters(entropy) {
+
+        const brute = Math.min(entropy * 1.2, 100);
+        const dict = Math.min(entropy * 0.6, 100);
+        const hybrid = Math.min(entropy * 0.9, 100);
+
+        document.getElementById("bruteBar").style.width = brute + "%";
+        document.getElementById("dictBar").style.width = dict + "%";
+        document.getElementById("hybridBar").style.width = hybrid + "%";
+    }
+
+    function checkPolicy() {
+
+        const password = passwordInput.value;
+
+        const lengthRule = password.length >= 8;
+        const upperRule = /[A-Z]/.test(password);
+        const numberRule = /[0-9]/.test(password);
+        const specialRule = /[^a-zA-Z0-9]/.test(password);
+
+        const status = document.getElementById("policyStatus");
+
+        if (lengthRule && upperRule && numberRule && specialRule) {
+            status.innerText = "PASS ✅";
+            status.className = "policy-pass";
+        } else {
+            status.innerText = "FAIL ❌";
+            status.className = "policy-fail";
+        }
+    }
+
+    /* 🔥 Threat Level Logic */
+
+    function updateThreatLevel(entropy) {
+
+        const el = document.getElementById("threatLevel");
+
+        if (entropy < 40) {
+            el.innerText = "HIGH RISK 🔥";
+            el.className = "threat-high";
+        }
+        else if (entropy < 70) {
+            el.innerText = "MEDIUM RISK ⚠";
+            el.className = "threat-medium";
+        }
+        else {
+            el.innerText = "LOW RISK ✅";
+            el.className = "threat-low";
+        }
+    }
+
+    function togglePassword() {
+        const input = document.getElementById("password");
+        input.type = input.type === "password" ? "text" : "password";
+    }
+</script>
+
+</body>
+</html>
