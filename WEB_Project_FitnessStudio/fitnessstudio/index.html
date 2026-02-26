@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitFlex - Transform Your Fitness Journey</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Popular Classes - Smallest */
+        .fitness-option.class {
+            width: 140px;  /* Width */
+            height: 140px; /* Height */
+        }
+
+        /* Workout Types - Medium */
+        .fitness-option.activity {
+            width: 180px;  /* Wider than classes */
+            height: 180px; /* Taller than classes */
+        }
+
+        :root {
+            --primary: #103a8f;
+            --primary-dark: #0a2764;
+            --accent: #923d19;
+            --dark: #0B0F29;
+            --light: #FFFFFF;
+            --text-dark: #212121;
+            --text-light: #B0B0B0;
+            --gray-light: #f8f9fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--text-dark);
+        }
+
+        /* Navbar */
+        nav {
+            height: 80px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            background-color: transparent;
+            color: var(--light);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-right: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 400;
+        }
+
+        .profile {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--light);
+            margin-left: 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 60vh;
+            background:
+                    linear-gradient(rgba(11, 15, 41, 0.7), rgba(11, 15, 41, 0.7)),
+                    url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center 30%;
+            background-repeat: no-repeat;
+            color: var(--light);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 80px;
+            border-bottom-left-radius: 150px;
+            border-bottom-right-radius: 150px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: var(--light);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* Search Card */
+        .search-card {
+            width: 900px;
+            max-width: 100%;
+            background-color: var(--light);
+            border-radius: 50px;
+            padding: 0.8rem 1.5rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            margin: 2rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .search-field {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex: 1;
+        }
+
+        .search-field i {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .search-field input, .search-field select {
+            border: none;
+            background: transparent;
+            padding: 0.5rem;
+            width: 100%;
+            outline: none;
+        }
+
+        .search-field input::placeholder {
+            color: var(--text-light);
+        }
+
+        .search-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: var(--light);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .search-btn:hover {
+            background-color: var(--primary-dark);
+            transform: scale(1.05);
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .view-all {
+            font-size: 0.9rem;
+            color: var(--primary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .view-all i {
+            margin-left: 5px;
+        }
+
+        /* Card Styles */
+        .card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .card-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-text {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .meta {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+        }
+
+        .meta i {
+            margin-right: 3px;
+        }
+
+        /* Fitness Options */
+        .fitness-container {
+            width: 100%;
+            overflow-x: auto;
+            padding: 1rem 0;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .fitness-options {
+            display: inline-flex;
+            gap: 1.5rem;
+            padding: 0 1rem;
+            justify-content: center;
+            min-width: 100%;
+        }
+
+        .fitness-option {
+            flex: 0 0 auto;
+            width: 160px;
+            height: 160px;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.3s ease;
+        }
+
+        .fitness-option:hover {
+            transform: translateY(-5px);
+        }
+
+        .fitness-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
+            z-index: 1;
+        }
+
+        .fitness-option span {
+            position: relative;
+            z-index: 2;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            font-size: 1rem;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+            width: 100%;
+        }
+
+        /* Why Choose Us */
+        .why-choose {
+            background-color: var(--gray-light);
+            border-radius: 30px;
+            padding: 3rem;
+        }
+
+        .why-choose-img {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links h5 {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .footer-links h5::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 2px;
+            background-color: var(--primary);
+            bottom: -8px;
+            left: 0;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--light);
+        }
+
+        .social-icons a {
+            color: var(--light);
+            font-size: 1.2rem;
+            margin-right: 1rem;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary);
+        }
+
+        .newsletter input {
+            border-radius: 50px;
+            border: none;
+            padding: 0.75rem 1rem;
+        }
+
+        .newsletter .btn {
+            border-radius: 50px;
+            padding: 0.75rem 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Hide scrollbar but keep functionality */
+        .fitness-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                height: 70vh;
+                border-bottom-left-radius: 80px;
+                border-bottom-right-radius: 80px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .search-card {
+                flex-direction: column;
+                padding: 1.5rem;
+                border-radius: 25px;
+            }
+
+            .search-field {
+                width: 100%;
+            }
+
+            .fitness-option {
+                width: 140px;
+                height: 140px;
+            }
+
+            .why-choose {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Navbar -->
+<nav>
+    <div class="logo">FitFlex</div>
+    <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Classes</a>
+        <a href="#">Trainers</a>
+        <a href="#">Schedule</a>
+        <a href="#">Membership</a>
+        <a href="#">Facilities</a>
+        <a href="#">Contact</a>
+    </div>
+    <div class="profile"></div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+    <h1>Transform Your Fitness Journey</h1>
+    <p>Discover on Our Interactive Platform</p>
+    <a href="#" class="btn">Join Now</a>
+
+    <!-- Search Card -->
+    <div class="search-card">
+        <div class="search-field">
+            <i class="fas fa-map-marker-alt"></i>
+            <input type="text" placeholder="Find nearby studios">
+        </div>
+        <div class="search-field">
+            <i class="fas fa-dumbbell"></i>
+            <select>
+                <option>All Workouts</option>
+                <option>Yoga</option>
+                <option>HIIT</option>
+                <option>Strength Training</option>
+            </select>
+        </div>
+        <div class="search-field">
+            <i class="far fa-calendar-alt"></i>
+            <input type="text" placeholder="Choose a Date">
+        </div>
+        <div class="search-field">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="1 person">
+        </div>
+        <button class="search-btn">
+            <i class="fas fa-search"></i>
+        </button>
+    </div>
+</section>
+
+<!-- Popular Classes -->
+<section class="section">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="section-title">Popular Classes</h2>
+            <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="fitness-container">
+            <div class="fitness-options">
+                <!-- Yoga -->
+                <div class="fitness-option class" style="background-image: url('assets/images/yoga.jpg')">
+                    <div class="fitness-overlay"></div>
+                    <span>Yoga<br><small>Mind & Body</small></span>
+                </div>
+
+                <!-- HIIT -->
+                <div class="fitness-option class" style="background-image: url('assets/images/hiit.jpg')">                    <div class="fitness-overlay"></div>
+                    <span>HIIT<br><small>High Intensity</small></span>
+                </div>
+
+                <!-- Pilates -->
+                <div class="fitness-option class" style="background-image: url('assets/images/pilates.jpg')">                    <div class="fitness-overlay"></div>
+                    <span>Pilates<br><small>Core Strength</small></span>
+                </div>
+
+
+
+                <!-- Zumba -->
+                <div class="fitness-option class" style="background-image: url('assets/images/zumba.jpg')">                    <div class="fitness-overlay"></div>
+                    <span>Zumba<br><small>Dance Fitness</small></span>
+                </div>
+
+                <!-- CrossFit -->
+                <div class="fitness-option class" style="background-image: url('assets/images/crossfit.jpg')">                    <div class="fitness-overlay"></div>
+                    <span>CrossFit<br><small>Strength Training</small></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Workout Types -->
+<section class="section">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="section-title">Workout Types</h2>
+            <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="fitness-container">
+            <div class="fitness-options">
+                <!-- Strength Training -->
+                <div class="fitness-option activity" style="background-image: url('assets/images/strength.jpg')">                    <div class="fitness-overlay"></div>
+                    <span>Strength Training</span>
+                </div>
+
+                <!-- Cardio -->
+                <div class="fitness-option activity" style="background-image: url('assets/images/cardio.jpg')">                    <div class="fitness-overlay"></div>
+                    <span>Cardio</span>
+                </div>
+
+                <!-- Functional -->
+                <div class="fitness-option activity" style="background-image: url('assets/images/functional.jpg')">                    <div class="fitness-overlay"></div>
+                    <span>Functional</span>
+                </div>
+
+                <!-- Recovery -->
+                <div class="fitness-option activity" style="background-image: url('assets/images/recovery.jpg')">                    <div class="fitness-overlay"></div>
+                    <span>Recovery</span>
+                </div>
+
+                <!-- Boxing -->
+                <div class="fitness-option activity" style="background-image: url('assets/images/boxing.jpg')">
+                    <div class="fitness-overlay"></div>
+                    <span>Boxing</span>
+                </div>
+
+                <!-- Dance -->
+                <div class="fitness-option activity" style="background-image: url('assets/images/dance.jpg')">
+                    <div class="fitness-overlay"></div>
+                    <span>Dance</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Trainers & Nutrition -->
+<section class="section">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="section-title">Trainers & Nutrition</h2>
+            <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="row">
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <img src="assets/images/trainer1.jpg" class="card-img-top" alt="Personal Trainer">
+                    <div class="card-body">
+                        <h5 class="card-title">Alex Johnson</h5>
+                        <p class="card-text"><i class="fas fa-map-marker-alt"></i> Strength Specialist</p>
+                        <div class="meta">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star-half-alt text-warning"></i>
+                            <span class="ms-2">4.5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <img src="assets/images/nutrition1.jpg" class="card-img-top" alt="Nutrition Plan">
+                    <div class="card-body">
+                        <h5 class="card-title">Clean Eating Plan</h5>
+                        <p class="card-text"><i class="fas fa-map-marker-alt"></i> Balanced Diet</p>
+                        <div class="meta">
+                            <i class="fas fa-utensils text-primary"></i>
+                            <span class="ms-2">Meal Plans</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <img src="assets/images/trainer2.jpg" class="card-img-top" alt="Yoga Instructor">
+                    <div class="card-body">
+                        <h5 class="card-title">Sarah Williams</h5>
+                        <p class="card-text"><i class="fas fa-map-marker-alt"></i> Yoga & Mindfulness</p>
+                        <div class="meta">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <span class="ms-2">5.0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <img src="assets/images/nutrition2.jpg" class="card-img-top" alt="Protein Shakes">
+                    <div class="card-body">
+                        <h5 class="card-title">Protein Power</h5>
+                        <p class="card-text"><i class="fas fa-map-marker-alt"></i> Post-Workout</p>
+                        <div class="meta">
+                            <i class="fas fa-utensils text-primary"></i>
+                            <span class="ms-2">Recovery</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Fitness Tips and Advice -->
+<section class="section bg-light">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="section-title">Fitness Tips & Advice</h2>
+            <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <img src="assets/images/tip1.jpg" class="card-img-top" alt="Fitness Tip">
+                    <div class="card-body">
+                        <h5 class="card-title">Morning Routine</h5>
+                        <p class="card-text">Start your day right with these energizing morning exercises.</p>
+                        <div class="meta">
+                            <small><i class="far fa-calendar-alt"></i> Today</small>
+                            <small class="ms-3"><i class="far fa-user"></i> John Doe</small>
+                            <small class="ms-3"><i class="far fa-comment"></i> 3 Comments</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <img src="assets/images/tip2.jpg" class="card-img-top" alt="Fitness Tip">
+                    <div class="card-body">
+                        <h5 class="card-title">Hydration Guide</h5>
+                        <p class="card-text">Discover why proper hydration is key to your fitness success.</p>
+                        <div class="meta">
+                            <small><i class="far fa-calendar-alt"></i> 2 days ago</small>
+                            <small class="ms-3"><i class="far fa-user"></i> Jane Smith</small>
+                            <small class="ms-3"><i class="far fa-comment"></i> 5 Comments</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="section">
+    <div class="container">
+        <div class="why-choose">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <h2 class="mb-4">Why choose FitFlex?</h2>
+                    <p class="mb-4">We craft personalized fitness experiences tailored to your goals. Our team of expert trainers works tirelessly to ensure every aspect of your fitness journey is perfect, from customized workouts to nutritional guidance.</p>
+                    <a href="#" class="btn btn-outline-primary rounded-pill">Read More</a>
+                </div>
+                <div class="col-md-6">
+                    <div class="why-choose-img">
+                        <img src="assets/images/why-choose.jpg" class="img-fluid rounded" alt="Happy Members">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <div class="footer-logo">FitFlex</div>
+                <p class="text">Helping you achieve your fitness goals since 2015.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <div class="footer-links">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">News & Articles</a></li>
+                        <li><a href="#">Our Trainers</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <div class="footer-links">
+                    <h5>Support</h5>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Feedback</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-links">
+                    <h5>Newsletter</h5>
+                    <p class="text mb-3">Subscribe to get updates on new classes and offers.</p>
+                    <form class="newsletter">
+                        <input type="email" class="form-control mb-2" placeholder="Your email">
+                        <button type="submit" class="btn btn-primary w-100">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-5 pt-3 border-top border-secondary">
+            <p class="text-muted mb-0">&copy; 2023 FitFlex. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Simple script for interactive elements
+    document.querySelectorAll('.search-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            alert('Search functionality would go here!');
+        });
+    });
+</script>
+</body>
+</html>
