@@ -1,0 +1,9 @@
+admin,admin123,Administrator
+manager,manager123,Manager
+cashier,cashier123,Cashier
+nina,nina123,Manager
+natali,nati123,Manager
+ana,ana123,Cashier
+evi,evi123,Manager
+nati,nati,Cashier
+

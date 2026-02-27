@@ -1,0 +1,5 @@
+Bill Number: 6
+Date: 2026-02-09T00:11:52.500862500
+Items:
+Whiteboard Marker Set (Qty: 5, Price: $6.00)
+Total Amount: $30.0

@@ -1,0 +1,37 @@
+A4 Printing Paper 500 Sheets,Office Supplies,3.5,6.0,40
+A4 Printing Paper 80gsm Box,Office Supplies,22.0,35.0,10
+Ballpoint Pen Blue,Stationery,0.2,0.6,190
+Ballpoint Pen Black,Stationery,0.2,0.6,180
+Gel Pen Set (10 pcs),Stationery,3.5,6.5,45
+Highlighter Set (4 pcs),Stationery,2.8,5.5,52
+Permanent Marker Black,Stationery,0.9,2.0,90
+Whiteboard Marker Set,Stationery,3.2,6.0,40
+Notebook A4 100 Pages,Stationery,1.2,2.5,120
+Notebook A5 Spiral,Stationery,0.8,1.8,150
+Sticky Notes 76x76mm,Stationery,0.6,1.5,110
+Sticky Notes Color Set,Stationery,1.8,3.5,70
+File Folder Plastic A4,Office Supplies,0.4,1.0,160
+Lever Arch File A4,Office Supplies,2.5,4.8,65
+Document Tray Plastic,Office Supplies,3.5,6.5,30
+Stapler Medium Size,Office Supplies,3.0,6.0,40
+Staples Pack 1000 pcs,Office Supplies,0.7,1.5,100
+Paper Clips Pack,Office Supplies,0.5,1.2,140
+Binder Clips Set,Office Supplies,1.2,2.8,85
+Scissors Office Size,Office Supplies,1.8,3.8,55
+Correction Tape,Stationery,0.9,2.0,75
+Glue Stick 21g,Stationery,0.6,1.5,90
+Calculator Basic,Office Equipment,5.0,9.0,2
+Calculator Scientific,Office Equipment,12.0,22.0,20
+Desk Organizer,Office Supplies,4.5,8.5,25
+Mouse Pad,Office Supplies,1.5,3.4,100
+Desk Lamp LED,Office Equipment,8.0,15.0,18
+Whiteboard 60x40cm,Office Equipment,12.0,22.0,1
+Flipchart Paper Pad,Office Supplies,6.0,11.0,23
+Printer Paper Colored Pack,Office Supplies,4.5,8.5,30
+Envelopes C5 Pack,Office Supplies,1.8,3.5,70
+Envelopes DL Pack,Office Supplies,1.5,3.0,90
+Thermal Paper Roll,Office Supplies,0.8,1.8,0
+Label Stickers A4 Pack,Office Supplies,3.0,6.0,4
+Clipboard A4,Office Supplies,1.2,2.5,65
+Ring Binder A4,Office Supplies,2.0,4.0,1
+Wireless Mouse,Electonics,30.0,40.0,101

@@ -1,0 +1,8 @@
+Bill Number: 2
+Date: 2025-01-27T12:40:11.908214
+Items:
+Stapler Medium Size (Qty: 1, Price: $6.00)
+Staples Pack 1000 pcs (Qty: 2, Price: $1.50)
+Scissors Office Size (Qty: 1, Price: $3.80)
+Correction Tape (Qty: 2, Price: $2.00)
+Total Amount: $16.80

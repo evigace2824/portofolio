@@ -1,0 +1,6 @@
+Bill Number: 8
+Date: 2026-02-10T09:53:59.241516800
+Items:
+Ballpoint Pen Blue (Qty: 10, Price: $0.60)
+Highlighter Set (4 pcs) (Qty: 3, Price: $5.50)
+Total Amount: $22.5

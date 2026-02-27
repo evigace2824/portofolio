@@ -148,41 +148,6 @@ From the project root directory, run the following command:
 python -m streamlit run gui/app.py
 ```
 
-## Second Way
-### Step 1: Clone the GitHub Repository
-
-Open a terminal and clone the project repository using:
-
-```bash
-git clone https://github.com/EPK-COURSES/cen352-term-project-2025-26-belina-elisona-evelina.git
-```
-## Step 2: Navigate to the Project Folder
-
-Move into the project root directory:
-```bash
-cd cen352-term-project-2025-26-belina-elisona-evelina
-```
-The project root directory contains:
-- requirements.txt
-- model_training/
-- gui/
-- README.md
-
-Usually it will be saved to C:\Users\User\TermProject
-
-## Step 3: Install Dependencies
-
-Install all required Python libraries by running:
-```bash
-pip install -r requirements.txt
-```
-This installs the dependencies needed for both model training and the GUI.
-
-## Step 4: Download the Dataset
-The training dataset is not included in the repository due to file size limitations.
-1. Download the Hospital Clinical Deterioration Dataset from this link: https://drive.google.com/file/d/1O3vETFRNkBsz1Kkaa7AIEyVs_2hPSUBt/view?usp=sharing
-2. Place the dataset file (hospital_deterioration_ml_ready.csv)
-inside the model_training/ folder.
 
 ## Prerequisite 
 Environment Requirements

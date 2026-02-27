@@ -1,0 +1,7 @@
+Bill Number: 1
+Date: 2025-01-27T10:15:32.124589
+Items:
+A4 Printing Paper 500 Sheets (Qty: 2, Price: $6.00)
+Ballpoint Pen Blue (Qty: 10, Price: $0.60)
+Notebook A4 100 Pages (Qty: 3, Price: $2.50)
+Total Amount: $25.00
