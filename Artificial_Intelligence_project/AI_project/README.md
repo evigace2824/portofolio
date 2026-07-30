@@ -148,42 +148,5 @@ From the project root directory, run the following command:
 python -m streamlit run gui/app.py
 ```
 
-
-## Prerequisite 
-Environment Requirements
-This project was developed and tested using:
-- **Python version:** 3.13
-
-To avoid dependency and kernel mismatch issues, it is strongly recommended to
-use **Python 3.13** when running the training notebook and the GUI.
-
-## Step 5: Train the Machine Learning Model
-Open the notebook:
-```bash
-model_training/train_model.ipynb
-```
-Run all cells in order.
-Running the notebook will:
-- Preprocess the dataset
-- Train Random Forest and XGBoost models
-- Evaluate model performance
-- Generate the following files locally:
-- rf_deterioration_model.pkl
-- feature_columns.pkl
-
-### Step 6: Run the Graphical User Interface (GUI)
-
-After the model files have been generated and saved into the `gui/` folder,
-the Streamlit application can be started as follows:
-
-1. Open the project folder in **File Explorer**.
-2. Navigate to the `gui/` folder.
-3. **Right-click** inside the `gui/` folder and select **“Open in Terminal”**
-   (or **“Open in Command Prompt” / “Open PowerShell window here”** on Windows).
-4. In the opened terminal, run:
-
-```bash
-python -m streamlit run app.py
-```
 The application will open in the web browser and display the patient monitoring
 dashboard, deterioration risk predictions, and optimized nurse visit sequence.
