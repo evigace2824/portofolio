@@ -22,4 +22,4 @@ Some of the technologies and tools used across the projects include:
 
 ## Purpose
 
-The purpose of this repository is to present my academic and personal development in software engineering and to showcase projects that reflect my learning journey and technical skills.
+The purpose of this repository is to present my academic and personal development in software engineering and to showcase projects that reflect my learning journey and technical skills .
